@@ -1,0 +1,26 @@
+.sideBarItemsContainer {
+  display: grid;
+  grid-template-columns: 10% auto;
+  /* margin-left: 15px; */
+  margin: 0px 10px 0px 0px;
+  padding: 10px 0;
+  border-radius: 0 100px 100px 0;
+}
+
+.sideBarItemsContainer:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+  cursor: pointer;
+}
+
+.sideBarItemsNames {
+  display: flex;
+  /* margin: 15px; */
+}
+
+.sideBarItemsNames p {
+  display: flex;
+  align-items: center;
+  margin-left: 8px;
+  font-size: small;
+  font-weight: 500;
+}
