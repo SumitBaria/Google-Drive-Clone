@@ -16,6 +16,7 @@ function App() {
         .then((result) => {
           setUser(result.user);
           console.log(result.user);
+          localStorage.setItem("User:", auth.currentUser.displayName);
         })
         .catch((error) => console.log(error.message));
     } else if (user) {

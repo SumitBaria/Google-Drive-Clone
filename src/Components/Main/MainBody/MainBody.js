@@ -28,7 +28,7 @@ function getModalStyle() {
   };
 }
 
-const useStyles = makeStyles((theme: Theme) => {
+const useStyles = makeStyles((theme) => {
   return createStyles({
     paper: {
       position: "absolute",
@@ -44,6 +44,7 @@ const useStyles = makeStyles((theme: Theme) => {
 
 const MainBody = () => {
   const [files, setFile] = useState([]);
+  const username = localStorage.getItem("User:");
   // const [open, setOpen] = useState(false);
 
   // const handleOpen = () => {
@@ -66,28 +67,32 @@ const MainBody = () => {
   return (
     <div className="mainBodyContainer">
       <Grid container spacing={3} className="mainBodyGrid">
-        {files.map(({ id, file }) => (
-          <Grid item xs={12} sm={6} md={2} key={id}>
-            <a href={file.fileUrl} className="mainBodyATag">
-              <Card className="mainBodyCard">
-                <CardActionArea>
-                  <CardMedia className="mainBodyFileIcon">
-                    <DescriptionIcon
-                      className="mainBodyFileIconImage"
-                      fontSize="large"
-                    />
-                  </CardMedia>
+        {files.map(({ id, file }) => {
+          if (file.username == username) {
+            return (
+              <Grid item xs={6} sm={6} md={3} key={id}>
+                <a href={file.fileUrl} className="mainBodyATag">
+                  <Card className="mainBodyCard">
+                    <CardActionArea>
+                      <CardMedia className="mainBodyFileIcon">
+                        <DescriptionIcon
+                          className="mainBodyFileIconImage"
+                          fontSize="large"
+                        />
+                      </CardMedia>
 
-                  <CardContent>
-                    <Typography gutterBottom className="mainBodyCardTitle">
-                      {file.caption}
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
-            </a>
-          </Grid>
-        ))}
+                      <CardContent>
+                        <Typography gutterBottom className="mainBodyCardTitle">
+                          {file.caption}
+                        </Typography>
+                      </CardContent>
+                    </CardActionArea>
+                  </Card>
+                </a>
+              </Grid>
+            );
+          }
+        })}
       </Grid>
     </div>
   );

@@ -65,4 +65,14 @@
   grid-template-columns: repeat(4, auto);
   align-items: center;
   object-fit: contain;
+  margin-right: 10px;
+}
+
+.headerIcons:hover {
+  cursor: pointer;
+}
+
+.headerMenuContainer {
+  margin-top: 40px;
+  padding: 0px;
 }

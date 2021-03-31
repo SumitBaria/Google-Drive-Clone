@@ -43,6 +43,7 @@ const NewFile = () => {
   const [file, setFile] = useState(null);
   // const [filesize, setFilesize] = useState(0);
   const [uploading, setUploading] = useState(false);
+  const [username, setUsername] = useState(localStorage.getItem("User:"));
 
   const handleOpen = () => {
     setOpen(true);
@@ -78,6 +79,7 @@ const NewFile = () => {
                 caption: file.name,
                 fileUrl: url,
                 size: snapshot._delegate.bytesTransferred,
+                username: username,
               });
 
               setUploading(false);
