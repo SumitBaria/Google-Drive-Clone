@@ -8,7 +8,7 @@ import {
   CardMedia,
 } from "@material-ui/core";
 import React, { useState, useEffect } from "react";
-import { db } from "../../../firebase";
+import { auth, db } from "../../../firebase";
 import DescriptionIcon from "@material-ui/icons/Description";
 import "../../../Styles/MainBody.css";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => {
 
 const MainBody = () => {
   const [files, setFile] = useState([]);
-  const username = localStorage.getItem("User:");
+  // const username = localStorage.getItem("User:");
   // const [open, setOpen] = useState(false);
 
   // const handleOpen = () => {
@@ -68,7 +68,7 @@ const MainBody = () => {
     <div className="mainBodyContainer">
       <Grid container spacing={3} className="mainBodyGrid">
         {files.map(({ id, file }) => {
-          if (file.username == username) {
+          if (file.username == auth.currentUser.displayName) {
             return (
               <Grid item xs={6} sm={6} md={3} key={id}>
                 <a href={file.fileUrl} className="mainBodyATag">

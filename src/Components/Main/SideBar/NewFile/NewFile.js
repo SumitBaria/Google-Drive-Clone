@@ -3,7 +3,7 @@ import "../../../../Styles/NewFile.css";
 import AddIcon from "@material-ui/icons/Add";
 
 import firebase from "firebase";
-import { storage, db } from "../../../../firebase";
+import { storage, db, auth } from "../../../../firebase";
 
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
@@ -43,7 +43,7 @@ const NewFile = () => {
   const [file, setFile] = useState(null);
   // const [filesize, setFilesize] = useState(0);
   const [uploading, setUploading] = useState(false);
-  const [username, setUsername] = useState(localStorage.getItem("User:"));
+  // const [username, setUsername] = useState(localStorage.getItem("User:"));
 
   const handleOpen = () => {
     setOpen(true);
@@ -79,7 +79,7 @@ const NewFile = () => {
                 caption: file.name,
                 fileUrl: url,
                 size: snapshot._delegate.bytesTransferred,
-                username: username,
+                username: auth.currentUser.displayName,
               });
 
               setUploading(false);
